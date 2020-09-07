@@ -1,1 +1,5 @@
 autom4te.cache
+
+#Files not needed by autoreconf -fiv
+build-scripts/ltmain.sh
+configure
