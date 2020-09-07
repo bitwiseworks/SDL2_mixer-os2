@@ -72,6 +72,7 @@ BUILD_CFLAGS="$CFLAGS $CPPFLAGS"
 EXTRA_CFLAGS="$INCLUDE $BASE_CFLAGS"
 BUILD_LDFLAGS="$LDFLAGS"
 EXTRA_LDFLAGS="$BASE_LDFLAGS"
+
 ## These are common directories to find software packages
 #for path in /usr/freeware /usr/pkg /usr/local; do
 #    if test -d $path/include; then
@@ -692,46 +693,46 @@ fi
 EXTRA_LDFLAGS="$EXTRA_LDFLAGS $LIBM"
 
 OBJECTS=`echo $SOURCES`
-DEPENDS=`echo $SOURCES`
+DEPENDS=`echo $SOURCES | tr ' ' '\n'`
 OBJECTS=`echo "$OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
 DEPENDS=`echo "$DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
 $(objects)/\2.lo: \1/\2.c\\
-	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+\n	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
 
 OBJECTS_CXX=`echo $SOURCES_CXX`
-DEPENDS_CXX=`echo $SOURCES_CXX`
+DEPENDS_CXX=`echo $SOURCES_CXX | tr ' ' '\n'`
 OBJECTS_CXX=`echo "$OBJECTS_CXX" | sed 's,[[^ ]]*/\([[^ ]]*\)\.cpp,$(objects)/\1.lo,g'`
 DEPENDS_CXX=`echo "$DEPENDS_CXX" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.cpp,\\
 $(objects)/\2.lo: \1/\2.cpp\\
-	\$(LIBTOOL) --mode=compile \$(CXX) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+\n	\$(LIBTOOL) --mode=compile \$(CXX) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
 OBJECTS="$OBJECTS $OBJECTS_CXX"
 DEPENDS="$DEPENDS $DEPENDS_CXX"
 DEPENDS=`echo "$DEPENDS" | sed 's,\\$,\\\\$,g'`
 
 VERSION_OBJECTS=`echo $VERSION_SOURCES`
-VERSION_DEPENDS=`echo $VERSION_SOURCES`
+VERSION_DEPENDS=`echo $VERSION_SOURCES | tr ' ' '\n'`
 VERSION_OBJECTS=`echo "$VERSION_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.rc,$(objects)/\1.o,g'`
 VERSION_DEPENDS=`echo "$VERSION_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.rc,\\
 $(objects)/\2.o: \1/\2.rc\\
-	\$(WINDRES) \$< \$@,g'`
+\n	\$(WINDRES) \$< \$@,g'`
 VERSION_DEPENDS=`echo "$VERSION_DEPENDS" | sed 's,\\$,\\\\$,g'`
 
 PLAYWAVE_SOURCES="$srcdir/playwave.c"
 PLAYWAVE_OBJECTS=`echo $PLAYWAVE_SOURCES`
-PLAYWAVE_DEPENDS=`echo $PLAYWAVE_SOURCES`
+PLAYWAVE_DEPENDS=`echo $PLAYWAVE_SOURCES | tr ' ' '\n'`
 PLAYWAVE_OBJECTS=`echo "$PLAYWAVE_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
 PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
 $(objects)/\2.lo: \1/\2.c\\
-	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+\n	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
 PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\\$,\\\\$,g'`
 
 PLAYMUS_SOURCES="$srcdir/playmus.c"
 PLAYMUS_OBJECTS=`echo $PLAYMUS_SOURCES`
-PLAYMUS_DEPENDS=`echo $PLAYMUS_SOURCES`
+PLAYMUS_DEPENDS=`echo $PLAYMUS_SOURCES | tr ' ' '\n'`
 PLAYMUS_OBJECTS=`echo "$PLAYMUS_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
 PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
 $(objects)/\2.lo: \1/\2.c\\
-	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+\n	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
 PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\\$,\\\\$,g'`
 
 dnl Expand the sources and objects needed to build the library
