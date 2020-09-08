@@ -3,3 +3,9 @@ autom4te.cache
 #Files not needed by autoreconf -fiv
 build-scripts/ltmain.sh
 configure
+acinclude/libtool.m4
+acinclude/ltoptions.m4
+acinclude/ltsugar.m4
+acinclude/ltversion.m4
+acinclude/lt~obsolete.m4
+aclocal.m4
