@@ -130,6 +130,9 @@ case "$host" in
             fi
         fi
         ;;
+     *os2*
+        EXE=".exe"
+    ;; 
     *)
         EXE=""
         ;;
