@@ -75,8 +75,13 @@
 #define CONFIG_FILE_ETC "/etc/timidity.cfg"
 #define CONFIG_FILE_ETC_TIMIDITY_FREEPATS "/etc/timidity/freepats.cfg"
 
-#if defined(__WIN32__) || defined(__OS2__)
+#if defined(__WIN32__)
 #define DEFAULT_PATH	"C:\\TIMIDITY"
+#elif defined(__OS2__)
+#define DEFAULT_PATH	"/@unixroot/etc/timidity"
+#define DEFAULT_PATH1	"/@unixroot/usr/share/timidity"
+#define DEFAULT_PATH2	"/@unixroot/usr/local/share/timidity"
+#define DEFAULT_PATH3	"/@unixroot/usr/local/lib/timidity"
 #else
 #define DEFAULT_PATH	"/etc/timidity"
 #define DEFAULT_PATH1	"/usr/share/timidity"
@@ -108,7 +113,7 @@
 #endif
 
 /* The path separator (D.M.) */
-#if defined(__WIN32__) || defined(__OS2__)
+#if defined(__WIN32__)
 #  define PATH_SEP '\\'
 #else
 #  define PATH_SEP '/'
